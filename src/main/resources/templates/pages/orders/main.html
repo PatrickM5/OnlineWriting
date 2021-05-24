@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+
+ <link href="/mycss/order-main.css" rel="stylesheet" />
+ <link href="/mycss/checkbox.css" rel="stylesheet" />
+
+</head>
+
+<body>
+<div layout:fragment="content">
+    <section class="bg-light py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="card">
+                        <div class="card-header p-2">
+                        <ul class="nav nav-pills">
+                            <li class="nav-item"><a class="nav-link active" href="#details" data-toggle="tab">Paper Details</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#preference" data-toggle="tab">Order Preference</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#contacts" data-toggle="tab">Contact Information</a></li>
+                        </ul>
+                        </div><!-- /.card-header -->
+                        <div class="card-body">
+                        <div class="tab-content">
+                            <div class="active tab-pane" id="details">
+                                <form>
+                                   
+                                    <div class="form-group mb-3">
+                                        <label> Type of service</label>
+                                    <select name="service" class="form-control" id="services">
+                                            <option th:each="choice : ${services}" 
+                                            th:value="${choice.id}" th:attr="data-amount=${choice.amount_chargable},data-name=${choice.name}"  
+                                            th:text="${choice.name}"></option>
+                                        </select>
+                                    
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <div class="row">
+                                            <div class="col-md-3 text-left mt-1">
+                                                <label>Type of paper</label>
+                                            </div>
+                                            <div class="col-md-8 text-left">
+                                                <select name="problem" class="form-control" id="problem">
+                                                    <option th:each="choice : ${problems}" 
+                                                    th:value="${choice.id}" th:attr="data-amount=${choice.amount_chargable},data-name=${choice.name}" 
+                                                    th:text="${choice.name}"></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group mb-3">
+                                        <div class="row">
+                                            <div class="col-md-3 text-left mt-3">
+                                                <label>Paper Details</label>
+                                            </div>
+                                            <div class="col-md-8 text-left">
+                                                <textarea class="form-control" name="paper-details" id="paper-details" cols="20" rows="2"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group mb-3">
+                                        <div class="row">
+                                            <div class="col-md-4 text-left">
+                                                <label>Additioanl materials</label>
+                                            </div>
+                                            <div class="col-md-7 text-left">
+                                                <input type="file" class="form-contol" name="additional-materials" id="additional-materials" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group mb-3" id="academicdiv">
+                                        <div class="row">
+                                            <div class="col-md-4 text-left">
+                                                <label> Academic level</label>
+                                            </div>
+                                            <div class="col-md-6 text-left">
+                                                <select name="academic" class="form-control" id="academic">
+                                                    <option th:each="choice : ${academics}" 
+                                                    th:value="${choice.id}" th:attr="data-amount=${choice.amount_chargable},data-name=${choice.name}" 
+                                                    th:text="${choice.name}"></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                     
+                                      
+                                    </div>
+
+                                    <div class="form-group mb-3">
+                                        <div class="row">
+                                            <div class="col-md-4 text-left">
+                                                <label>Number of pages, or <br/> words</label>
+                                            </div>
+                                            <div class="col-md-4 text-left">
+                                                <div class="value-button" id="decrease" onclick="decreaseValue()" value="Decrease Value">-</div>
+                                                <input type="number" id="number" name="number" value="1" />
+                                                <div class="value-button" id="increase" onclick="increaseValue()" value="Increase Value">+</div>
+                                            </div>
+                                            <div class="col-md-3 text-left">
+                                                <select name="spacing" id="spacing" class="form-control">
+                                                    <option value="Double spaced" >Double Spaced</option>
+                                                    <option value="Double spaced" >Single Spaced</option>
+                                                </select>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group mb-3">
+                                        <label>Select Currency</label>
+                                        <div id="currency-holder">
+                                    
+                                            <select name="currency" size="5"  id="currency">
+                                                <option th:each="choice : ${currencies}" 
+                                                th:value="${choice.id}"  data-cu="1"
+                                                th:text="${choice.name}" th:selected="${choice.id == 1}" ></option>
+                                            </select>                                     
+                                        </div>
+                                    </div>
+
+                                   
+                                    <div class="form-group mb-3">
+                                        <div class="row">
+                                            <div class="col-md-3 text-left">
+                                                <label>Urgency</label>
+                                            </div>
+                                            <div class="col-md-4 text-left">
+                                                <select name="urgencie" class="form-control" id="urgencie">
+                                                    <option th:each="choice : ${urgencies}" 
+                                                    th:value="${choice.id}" th:attr="data-amount=${choice.amount_chargable},data-name=${choice.name}" 
+                                                    th:text="${choice.name}"></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <div class="row">
+                                            <div class="col-md-4 text-left">
+                                                <label>Discount Code</label>
+                                            </div>
+                                            <div class="col-md-6 text-left pl-2">
+                                                <input class="form-control" name="discount-code" id="discount-code" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p><b><i>Total price <span id="currency_sysmbol">$</span>  <span id="amounting" th:text="${init_amount}"></span> </i></b></p>
+            
+                                    <a class="btn-primary btn rounded-pill px-4 ml-lg-4" href="/order">Order Now<i class="fas fa-arrow-right ml-1"></i></a>
+                                </form>
+                            </div>
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="preference">
+                          
+                                <p class="text-center">Additional Services for better grades</p>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <span>Writer Level</span>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card card-danger">
+                                            <div class="card-header">
+                                              <div class="card-title">
+                                                  <h3>Free</h3>
+                                                  <p>Best available</p>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                            <p><i>  One of our freelancers, proficient in your subject area, ready to meet your deadline</i></p>
+                                            </div>
+                                            <!-- /.card-body -->
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card card-danger">
+                                            <div class="card-header">
+                                              <div class="card-title">
+                                                  <h3>+25%</h3>
+                                                  <p>Premium</p>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                            <p><i>  High-rank professional with extensive experience in your field of study</i></p>
+                                            </div>
+                                            <!-- /.card-body -->
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card card-danger">
+                                            <div class="card-header">
+                                              <div class="card-title">
+                                                  <h3>+30%</h3>
+                                                  <p>TOP 10</p>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                            <p><i>  One of top 10 experts with the highest customer appraisal in your subject</i></p>
+                                            </div>
+                                            <!-- /.card-body -->
+                                        </div>
+                                    </div>
+
+                                </div>
+                               
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label >Urgent Writer assign</label>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <input type="checkbox" name="writer-assign" id="writer-assign">
+                                    </div>
+                                    <div class="col-md-2">
+                                      <span style="color: red;">+$9.9%</span>
+                                    </div>
+                                </div>
+
+                                   
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label >I'd like to grt a draft</label>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <input type="checkbox" name="writer-assign" id="writer-assign">
+                                    </div>
+                                    <div class="col-md-2">
+                                      <span style="color: red;">+$20%</span>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <span>Customer Service</span>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card card-success">
+                                            <div class="card-header">
+                                              <div class="card-title">
+                                                  <h3>Free</h3>
+                                                  <p>Basic</p>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="round">
+                                                    <input type="checkbox" id="checkboxf" />
+                                                    <label for="checkbox"></label>
+                                                </div>
+                                            </div>
+                                            <!-- /.card-body -->
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card card-success">
+                                            <div class="card-header">
+                                              <div class="card-title">
+                                                  <h3>+$5.99</h3>
+                                                  <p>ADVANCED</p>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="round">
+                                                    <input type="checkbox" id="checkboxa" />
+                                                    <label for="checkbox"></label>
+                                                </div>
+                                            </div>
+                                            <!-- /.card-body -->
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card card-success">
+                                            <div class="card-header">
+                                              <div class="card-title">
+                                                  <h3>+$9.99</h3>
+                                                  <p>PREMIUN</p>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="round">
+                                                    <input type="checkbox" id="checkboxf" />
+                                                    <label for="checkbox"></label>
+                                                </div>
+                                            </div>
+                                            <!-- /.card-body -->
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <!-- /.tab-pane -->
+        
+                            <div class="tab-pane" id="contacts">
+                            <div class="card card-default">
+                                <div class="card-header">
+                                    <ul class="nav nav-pills">
+                                        <li class="nav-item"><a class="nav-link active" href="#new" data-toggle="tab">New Customer</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#return" data-toggle="tab">Returning Customer</a></li>
+                                    </ul>
+                                </div><!-- /.card-header -->
+                                <div class="card-body">
+                                    <div class="tab-content">
+                                        <div class="active tab-pane y-2" id="new">
+                                            <form class="form-horizontal">
+                                                <div class="form-group row">
+                                                <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+                                                <div class="col-sm-10">
+                                                    <input type="email" class="form-control" id="inputName" placeholder="Name">
+                                                </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                                                <div class="col-sm-10">
+                                                    <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                                                </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                <label for="inputName2" class="col-sm-3 col-form-label">Your Country</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="inputName2" placeholder="Name">
+                                                </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                <label for="inputExperience" class="col-sm-4 col-form-label">Phone Number</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control" id="inputName2" placeholder="phone">
+                                                </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                <label for="inputSkills" class="col-sm-4 col-form-label">Create Password</label>
+                                                <div class="col-sm-8">
+                                                    <input type="password" class="form-control" id="inputSkills" placeholder="Skills">
+                                                </div>
+                                                </div>
+                
+                                                <div class="form-group row">
+                                                    <label for="inputSkills" class="col-sm-4 col-form-label">Confirm Password</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="password" class="form-control" id="inputSkills" placeholder="Skills">
+                                                    </div>
+                                                </div>
+                                              
+                                            </form>
+                                        </div>
+                                        <div class="active tab-pane my-2" id="return">
+                                            <form class="form-horizontal">
+                                                <div class="form-group row">
+                                                <label for="inputSkills" class="col-sm-4 col-form-label">Create Password</label>
+                                                <div class="col-sm-8">
+                                                    <input type="password" class="form-control" id="inputSkills" placeholder="Skills">
+                                                </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="inputSkills" class="col-sm-4 col-form-label">Confirm Password</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="password" class="form-control" id="inputSkills" placeholder="Skills">
+                                                    </div>
+                                                </div>
+                                              
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                            </div>
+                            <!-- /.tab-pane -->
+                        </div>
+                        <!-- /.tab-content -->
+                        </div><!-- /.card-body -->
+                 </div>
+                </div>
+                    
+                <div class="col-lg-5">
+                    <div class="card pricing">
+                        <div class="card-body p-5">
+                            <div class="badge badge-primary-soft badge-pill badge-marketing badge-sm text-primary">Standard</div>
+                            <div class="pricing-price"><sup>$</sup>19<span class="pricing-price-period">/mo bonus price</span></div>
+                            Totals
+                        </div>
+                        <div class="card-footer px-5">
+                            <a class="d-flex align-items-center justify-content-between" href="#!">Get Started!<i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+</div>
+
+<div layout:fragment="js">
+
+    <script src="/myjs/orders/main.js"></script>
+
+</div>
+
+</body>
+</html>

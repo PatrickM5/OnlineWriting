@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE">Writers Portal</title>
+    <link href="/plugins/css/styles.css" rel="stylesheet" />
+    <link href="/mycss/main.css" rel="stylesheet" />
+<!--    <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />-->
+    <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.24.1/feather.min.js" crossorigin="anonymous"></script>
+  <style>
+      .hidden{
+          display: none;
+      }
+  </style>
+
+</head>
+<body>
+<div id="layoutDefault">
+    <div id="layoutDefault_content">
+        <main>
+         <div th:replace="fragments/header"></div>
+            <div layout:fragment="content"></div>
+            <div th:replace="fragments/footer"></div>
+        </main>
+    </div>
+</div>
+<!-- jQuery -->
+<script src="/lte3/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/lte3/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="/lte3/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/lte3/dist/js/adminlte.min.js"></script>
+<script src="/lte3/plugins/toastr/toastr.min.js"></script>
+<script src="/plugins/js/sb-customizer.js"></script>
+<script>
+      feather.replace()
+</script>
+
+<div layout:fragment="js"></div>
+</body>
+
+</html>

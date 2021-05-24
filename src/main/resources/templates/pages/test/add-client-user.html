@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+
+
+   
+</head>
+
+<body>
+<section layout:fragment="header">
+    <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1><span th:text="${createClient != null ? 'Update Client' : 'Create Client User'}"></span></h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+                <li class="breadcrumb-item active"><span th:text="${createClient != null ? 'Update Client' : 'Create Client'}"></span></li>
+              </ol>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+</section>
+<div layout:fragment="content">
+
+    <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-12">
+            <!-- jquery validation -->
+            <div class="card card-primary">
+             
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form role="form" id="registerClient"  method="POST" th:action="${createClient != null ? 'update' : 'add'}" >
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="fullName">Full Names</label>
+                        <input type="text" name="fullName" class="form-control" id="fullName" th:value="${createClient != null ? createClient.fullName : ''}" placeholder="Full names">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input  name="email" class="form-control" id="email" th:text="${createClient != null ? createClient.businessAddress : ''}"  placeholder="Client Address" />
+                      </div>
+                    </div>
+                  </div>
+                 
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="mobileNo">Mobile number</label>
+                        <input type="text" name="mobileNo" class="form-control" id="mobileNo" th:value="${createClient != null ? createClient.businessRegistrationNo : ''}" placeholder="mobileNo">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="userName">Username</label>
+                          <input type="text" name="userName" class="form-control" id="userName" th:value="${createClient != null ? createClient.userName : ''}" placeholder="User Name">
+                        </div>
+                      </div>
+                    
+                    
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="status">Status</label>
+                          <select name="status" id="status" class="form-control">
+                            <option th:selected="${createClient != null && createClient.status eq 'Active'}"  value="Active">Active</option>
+                            <option th:selected="${createClient != null && createClient.status eq 'Deactivated'}" value="Deactivated">Deactivated</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="userGroup">User Group</label>
+                          <select name="userGroup" id="userGroup" class="form-control">
+                            <option value="Client Admin">Client Admin</option>
+                            <option value="Client User">Client User</option>
+                            <option value="Integrity Admin">Integrity Admin</option>
+                            <option value="Integrity  User">Integrity  User</option>
+                           </select>
+                        </div>
+                      </div>
+
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="clientEmail">Client</label>
+                          <select name="clientEmail" id="clientEmail" class="form-control">
+                           </select>
+                        </div>
+                      </div>
+
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="password">User Password</label>
+                          <input type="password" name="password" id="password" class="form-control" th:value="${createClient != null ? createClient.password : ''}" >
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="cpassword">Confirm Password</label>
+                          <input type="password" name="cpassword" id="cpassword" class="form-control"  />
+                        </div>
+                      </div>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer ">
+                  <button type="submit" class="btn btn-primary float-right"><i class="fa fa-circle-o-notch fa-spin submitIcon"></i>  <span th:text="${createClient != null ? 'Update Client' : 'Create Client User'}"></span></button>
+                </div>
+              </form>
+            </div>
+            <!-- /.card -->
+            </div>
+          <!--/.col (left) -->
+          <!-- right column -->
+          <div class="col-md-6">
+
+          </div>
+          <!--/.col (right) -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+
+</div>
+
+<div layout:fragment="js">
+  <script src="/lte3/plugins/jquery-validation/jquery.validate.min.js"></script> 
+  <script src="/lte3/plugins/jquery-validation/additional-methods.min.js"></script>
+  <script src="/lte3/plugins/moment/moment.min.js"></script>
+  <script src="/lte3/plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+  <script src="/myjs/client/add-user.js"></script>
+</div>
+
+</body>
+</html>

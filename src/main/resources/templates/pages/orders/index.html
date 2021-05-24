@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+
+ <link href="/mycss/orders.css" rel="stylesheet" />
+
+</head>
+
+<body>
+<div layout:fragment="content">
+
+    <hr class="my-0" />
+    <section class="bg-light py-10">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2>One plan, no hassle</h2>
+                <p class="lead">Easy pricing means no suprises.</p>
+            </div>
+            <div class="row no-gutters align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="card pricing">
+                        <div class="card-body p-5">
+                            <div class="badge badge-primary-soft badge-pill badge-marketing badge-sm text-primary">Standard</div>
+                            <div class="pricing-price"><sup>$</sup>19<span class="pricing-price-period">/mo bonus price</span></div>
+                            URGENT CUSTOM WRITING FROM A LEGIT WRITING SERVICE
+                        </div>
+                        <div class="card-footer px-5">
+                            <a class="d-flex align-items-center justify-content-between" href="#!">Get Started!<i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card pricing pricing-right bg-light-800">
+                        <div class="card-body p-5">
+                            <form>
+                                <div class="form-group mb-3">
+                                    <label>Select Currency</label>
+                                    <div id="currency-holder">
+                                 
+                                        <select name="currency" size="5"  id="currency">
+                                            <option th:each="choice : ${currencies}" 
+                                              th:value="${choice.id}"  data-cu="1"
+                                             th:text="${choice.name}" th:selected="${choice.id == 1}" ></option>
+                                        </select>                                     
+                                </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label> Type of service</label>
+                                   <select name="service" class="form-control" id="services">
+                                        <option th:each="choice : ${services}" 
+                                          th:value="${choice.id}" th:attr="data-amount=${choice.amount_chargable},data-name=${choice.name}"  
+                                         th:text="${choice.name}"></option>
+                                    </select>
+                                  
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label>Type of paper</label>
+                                    <select name="problem" class="form-control" id="problem">
+                                        <option th:each="choice : ${problems}" 
+                                         th:value="${choice.id}" th:attr="data-amount=${choice.amount_chargable},data-name=${choice.name}" 
+                                         th:text="${choice.name}"></option>
+                                    </select>
+                                </div>
+                                <div class="form-group mb-3">
+                                  <div class="row">
+                                    <div class="col-md-5 text-left">
+                                        <label>Number of pages, or <br/> words</label>
+                                    </div>
+                                    <div class="col-md-7 text-right">
+                                        <div class="value-button" id="decrease" onclick="decreaseValue()" value="Decrease Value">-</div>
+                                        <input type="number" id="number" name="number" value="1" />
+                                        <div class="value-button" id="increase" onclick="increaseValue()" value="Increase Value">+</div>
+                                    </div>
+                                  </div>
+                                  
+                                </div>
+                                <div class="form-group mb-3" id="academicdiv">
+                                    <label> Academic level</label>
+                                    <select name="academic" class="form-control" id="academic">
+                                        <option th:each="choice : ${academics}" 
+                                         th:value="${choice.id}" th:attr="data-amount=${choice.amount_chargable},data-name=${choice.name}" 
+                                         th:text="${choice.name}"></option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label>Urgency</label>
+                                    <select name="urgencie" class="form-control" id="urgencie">
+                                        <option th:each="choice : ${urgencies}" 
+                                         th:value="${choice.id}" th:attr="data-amount=${choice.amount_chargable},data-name=${choice.name}" 
+                                         th:text="${choice.name}"></option>
+                                    </select>
+                                </div>
+                                <p><b><i>Total price <span id="currency_sysmbol">$</span>  <span id="amounting" th:text="${init_amount}"></span> </i></b></p>
+
+                                <a class="btn-primary btn rounded-pill px-4 ml-lg-4" href="/order">Order Now<i class="fas fa-arrow-right ml-1"></i></a>
+
+
+                            </form>
+                        </div>
+                        <div class="card-footer bg-gray-900 px-5">
+                            <a class="text-white-50 d-flex align-items-center justify-content-between" href="/order">Contact Sales<i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr class="my-0" />
+    <hr class="my-0" />
+</div>
+<div layout:fragment="js">
+
+    <script src="/myjs/orders/index.js"></script>
+
+</div>
+
+</body>
+</html>

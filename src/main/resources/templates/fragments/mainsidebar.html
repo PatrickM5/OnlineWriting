@@ -1,0 +1,638 @@
+<!-- sidebar: style can be found in sidebar.less -->
+<section  xmlns:th="http://www.w3.org/1999/xhtml">
+    <!-- sidebar menu: : style can be found in sidebar.less -->
+    <!--    // th:if="${#lists.contains(user.roles, &quot;API_USER&quot;) }-->
+
+    <!-- <span th:if="${user != null or user.roles !=null}"> -->
+
+    
+
+        <a href="/dashboard" class="brand-link">
+            <img src="../../lte3/img/logo.jpg"
+                 alt=""
+                 class="brand-image img-circle elevation-3"
+                 style="opacity: .8">
+            <span class="brand-text font-weight-light"><b>Habary</b>
+            
+            </span>
+          </a>
+
+
+      
+          <div th:switch="${user.portalRole}"> 
+            <!-- Admin PANEL -->
+            <div th:case="'ADMIN'">
+
+
+               <!-- Sidebar -->
+          <div class="sidebar">
+            <!-- Sidebar Menu -->
+            <nav class="mt-2">
+              <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <!-- Add icons to the links using the .nav-icon class
+                     with font-awesome or any other icon font library -->
+        
+
+                     <li class="nav-header">MESSAGES</li>
+                    
+                     <li class="nav-item has-treeview">
+                       <a href="#" class="nav-link">
+                         <i class="nav-icon fas fa-envelope"></i>
+                         <p>
+                           Outbox
+                           <i class="right fas fa-angle-left"></i>
+                         </p>
+                       </a>
+
+
+                       <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                          <a href="/messages/send-messages" class="nav-link">
+                            <i class="fa fa-edit nav-icon"></i>
+                            <p>Compose</p>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a href="/messages/outgoing-messages" class="nav-link">
+                            <i class="fa fa-inbox nav-icon"></i>
+                            <p>Outgoing Messages</p>
+                          </a>
+                        </li>
+                      </ul>
+                      </li>
+
+                      <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                          <i class="nav-icon fas fa-envelope"></i>
+                          <p>
+                            Inbox
+                            <i class="right fas fa-angle-left"></i>
+                          </p>
+                        </a>
+
+                       <ul class="nav nav-treeview">
+                         <li class="nav-item">
+                           <a href="/messages/incoming-messages" class="nav-link">
+                             <i class="far fa-circle nav-icon"></i>
+                             <p>Incoming Messages</p>
+                           </a>
+                         </li>
+                       
+                       </ul>
+                     </li>
+                 
+               
+                <hr class="horizintal-line" />
+                    
+                <li class="nav-item has-treeview ">
+                    <a href="#" class="nav-link ">
+                      <i class="nav-icon fa fa-users"></i>
+                      <p>
+                        User & Groups
+                        <i class="fas fa-angle-left right"></i>
+                       
+                      </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href="/users/index" class="nav-link">
+                          <i class="fa fa-users nav-icon"></i>
+                          <p>Users</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="/users/user-groups" class="nav-link">
+                          <i class="fa fa-object-group nav-icon"></i>
+                          <p>User Groups</p>
+                        </a>
+                      </li>
+                                     
+                    </ul>
+                  </li>
+
+                  <hr class="horizintal-line" />
+                  <li class="nav-item has-treeview ">
+                    <a href="#" class="nav-link active">
+                      <i class="nav-icon fa fa-building"></i>
+                      <p>
+                        Clients/Business
+                        <i class="fas fa-angle-left right"></i>
+                       
+                      </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href="/client/add" class="nav-link">
+                          <i class="fa fa-plus nav-icon"></i>
+                          <p>Add Client</p>
+                        </a>
+                      </li>
+
+                      <li class="nav-item">
+                        <a href="/client/add-user" class="nav-link">
+                          <i class="fa fa-plus-circle nav-icon"></i>
+                          <p>Add Client User</p>
+                        </a>
+                      </li>
+
+                      <li class="nav-item">
+                        <a href="/client/index" class="nav-link">
+                          <i class="fa fa-tasks nav-icon"></i>
+                          <p>View & Manage </p>
+                        </a>
+                      </li>
+                                     
+                    </ul>
+                  </li>
+                  <hr class="horizintal-line" />
+                  <li class="nav-item has-treeview ">
+                    <a href="#" class="nav-link ">
+                      <i class="nav-icon fa fa-th-large"></i>
+                      <p>
+                      Service Management
+                        <i class="fas fa-angle-left right"></i>
+                      </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href="/configs/index" class="nav-link">
+                          <i class="nav-icon far fa-circle text-warning"></i>
+                          <p>Manage Configs</p>
+                        </a>
+                      </li>
+
+                       <li class="nav-item">
+                        <a href="/apikeys/index" class="nav-link">
+                          <i class="nav-icon far fa-circle text-danger"></i>
+                          <p>Manage ApiKeys</p>
+                        </a>
+                      </li>
+
+                      <li class="nav-item">
+                        <a href="/callbackurls/index" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Manage callbacks</p>
+                        </a>
+                      </li>
+
+                      <li class="nav-item">
+                        <a href="/credits/index" class="nav-link">
+                          <i class="fa fa-credit-card-alt nav-icon"></i>
+                          <p>Manage Credits</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="/offercodes/index" class="nav-link">
+                          <i class="nav-icon far fa-circle text-danger"></i>
+                          <p>Manage OfferCodes</p>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                  <hr class="horizintal-line" />
+
+
+                  <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                      <i class="nav-icon fas fa-envelope"></i>
+                      <p>
+                        Quota
+                        <i class="right fas fa-angle-left"></i>
+                      </p>
+                    </a>
+
+                   <ul class="nav nav-treeview">
+                     <li class="nav-item">
+                       <a href="/quota/safaricom" class="nav-link">
+                         <i class="far fa-circle nav-icon"></i>
+                         <p>Safaricom</p>
+                       </a>
+                       <a href="/quota/puchases" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Quota Purchases</p>
+                      </a>
+                       
+                     </li>
+                   
+                   </ul>
+                 </li>
+
+                 <hr class="horizintal-line" />
+
+
+                 <li class="nav-item has-treeview">
+                  <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-envelope"></i>
+                    <p>
+                      Reports
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+
+                 <ul class="nav nav-treeview">
+                   <li class="nav-item">
+                     <a href="/reports/outgoingmessages" class="nav-link">
+                       <i class="far fa-circle nav-icon"></i>
+                       <p>Outgoing Messages </p>
+                     </a>
+                   </li>
+                   <li class="nav-item">
+                    <a href="/reports/incomingmessages" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Incoming Messages </p>
+                    </a>
+                  </li>
+                 </ul>
+               </li>
+
+               <hr class="horizintal-line" />
+               
+
+
+                  <!-- <li class="nav-item has-treeview ">
+                    <a href="#" class="nav-link ">
+                      <i class="nav-icon fas fa-copy"></i>
+                      <p>
+                        Reports
+                        <i class="fas fa-angle-left right"></i>
+                       
+                      </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href="#!" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Utilization Reports</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#!" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Credit Balances</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#!" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Service Activity</p>
+                        </a>
+                      </li>
+                                     
+                    </ul>
+                  </li>
+
+
+                  <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link ">
+                      <i class="nav-icon fas fa-copy"></i>
+                      <p>
+                        API
+                        <i class="fas fa-angle-left right"></i>
+                        
+                      </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a target="_blank" href="https://bulksms.habary.co.ke/habary-api/" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Documentation</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="/clients/apikeys" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>API Key</p>
+                        </a>
+                      </li>
+
+                      <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link ">
+                          <i class="nav-icon fas fa-copy"></i>
+                          <p>
+                            Register Callbacks
+                            <i class="fas fa-angle-left right"></i>
+                          </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                          <li class="nav-item">
+                            <a href="/clients/incoming-callbacks" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Incoming SMS</p>
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a href="/clients/outgoing-callbacks" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Outgoing SMS</p>
+                            </a>
+                          </li>
+                        </ul>
+                      </li>
+
+                    </ul>
+                  </li>
+
+
+                  <li class="nav-item has-treeview ">
+                    <a href="#" class="nav-link ">
+                      <i class="nav-icon fas fa-copy"></i>
+                      <p>
+                        Settings
+                        <i class="fas fa-angle-left right"></i>
+                       
+                      </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href="#!" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Balance Alerts</p>
+                        </a>
+                      </li>
+                                     
+                    </ul>
+                  </li> -->
+               
+               
+              
+              
+              </ul>
+            </nav>
+            <!-- /.sidebar-menu -->
+          </div>
+
+            </div>
+
+          
+            <!--  CLIENT PANEL  -->
+            <div th:case="'CLIENT'">
+                <!-- Sidebar -->
+                <div class="sidebar">
+                  <!-- Sidebar Menu -->
+                  <nav class="mt-2">
+                    <ul th:if="${#lists.contains(user.roles, &quot;Integrity Admin&quot;) or  #lists.contains(user.roles, &quot;Integrity User&quot;) or  #lists.contains(user.roles, &quot;Client User&quot;) or  #lists.contains(user.roles, &quot;Client Admin&quot;) or  #lists.contains(user.roles, &quot;Lanstar Admin&quot;) or  #lists.contains(user.roles, &quot;Lanstar user&quot;) }"
+                    class="nav nav-pills nav-sidebar flex-column"
+                    data-widget="treeview" role="menu" data-accordion="false">
+                      <!-- Add icons to the links using the .nav-icon class
+                          with font-awesome or any other icon font library -->
+
+                          <li class="nav-header">MESSAGES</li>
+                    
+                          <li class="nav-item has-treeview  menu-open" >
+                            <a href="#" class="nav-link active">
+                              <i class="nav-icon fas fa-envelope"></i>
+                              <p>
+                                Outbox
+                                <i class="right fas fa-angle-left"></i>
+                              </p>
+                            </a>
+     
+     
+                            <ul class="nav nav-treeview">
+                             <li class="nav-item">
+                               <a href="/clients/messages/send-messages" class="nav-link">
+                                 <i class="fa fa-edit nav-icon"></i>
+                                 <p>Compose</p>
+                               </a>
+                             </li>
+
+                              <div th:if="${#lists.contains(user.roles, &quot;Integrity Admin&quot;) or  #lists.contains(user.roles, &quot;Integrity User&quot;) }">
+                                <li class="nav-item">
+                                  <a href="/clients/messages/integrity-outgoing-messages" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Outgoing Messages</p>
+                                  </a>
+                                </li>
+                              </div>
+                              <!-- ELSE -->
+                              <div th:unless="${#lists.contains(user.roles, &quot;Integrity Admin&quot;) or  #lists.contains(user.roles, &quot;Integrity User&quot;) }">
+                                <li class="nav-item">
+                                  <a href="/clients/messages/outgoing-messages" class="nav-link">
+                                    <i class="fa fa-inbox nav-icon"></i>
+                                    <p>Outgoing Messages</p>
+                                  </a>
+                                </li>
+                              </div>
+                           
+                           </ul>
+                           </li>
+     
+                           <li class="nav-item has-treeview">
+                             <a href="#" class="nav-link">
+                               <i class="nav-icon fas fa-envelope"></i>
+                               <p>
+                                 Inbox
+                                 <i class="right fas fa-angle-left"></i>
+                               </p>
+                             </a>
+                            <ul class="nav nav-treeview">
+                              <div th:if="${#lists.contains(user.roles, &quot;Integrity Admin&quot;) or  #lists.contains(user.roles, &quot;Integrity User&quot;) }">
+                                <li class="nav-item">
+                                  <a href="/clients/messages/integrity-incoming-messages" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Incoming Messages</p>
+                                  </a>
+                                </li>
+                              </div>
+                              <!-- ELSE -->
+                              <div th:unless="${#lists.contains(user.roles, &quot;Integrity Admin&quot;) or  #lists.contains(user.roles, &quot;Integrity User&quot;) }">
+                                <li class="nav-item">
+                                  <a href="/clients/messages/incoming-messages" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Incoming Messages</p>
+                                  </a>
+                                </li>
+                              </div>
+                            </ul>
+                          </li>
+
+
+                          <hr class="horizintal-line" th:if="${#lists.contains(user.roles, &quot;Client User&quot;) or  #lists.contains(user.roles, &quot;Client Admin&quot;) or  #lists.contains(user.roles, &quot;Lanstar Admin&quot;) or  #lists.contains(user.roles, &quot;Lanstar user&quot;) }" />
+
+                          <li class="nav-item has-treeview " th:if="${#lists.contains(user.roles, &quot;Client User&quot;) or  #lists.contains(user.roles, &quot;Client Admin&quot;) or  #lists.contains(user.roles, &quot;Lanstar Admin&quot;) or  #lists.contains(user.roles, &quot;Lanstar user&quot;) }">
+                            <a href="#" class="nav-link ">
+                              <i class="nav-icon fa fa-money"></i>
+                              <p>
+                                Credits
+                                <i class="fas fa-angle-left right"></i>
+                              
+                              </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                              <li class="nav-item">
+                                <a href="/clients/credits" class="nav-link">
+                                  <i class="fa fa-money nav-icon"></i>
+                                  <p>View Credits</p>
+                                </a>
+                              </li>
+                                           
+                            </ul>
+                          </li> 
+                      
+                    
+                     <hr class="horizintal-line" />
+
+                    <li class="nav-item has-treeview "  th:if="${#lists.contains(user.roles, &quot;Integrity Admin&quot;) or  #lists.contains(user.roles, &quot;Integrity User&quot;) }" >
+                      <a href="#" class="nav-link ">
+                        <i class="nav-icon fa fa-th-large"></i>
+                        <p>
+                          Our Services
+                          <i class="fas fa-angle-left right"></i>
+                        
+                        </p>
+                      </a>
+                      <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                          <a href="/clients/integrity/regions" class="nav-link">
+                            <i class="nav-icon far fa-circle text-success"></i>
+                            <p>Regions</p>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a href="/clients/integrity/contacts" class="nav-link">
+                            <i class="nav-icon far fa-circle text-danger"></i>
+                            <p>Contacts</p>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a href="/clients/integrity/authorities" class="nav-link">
+                            <i class="nav-icon far fa-circle text-warning"></i>
+                            <p>Authority</p>
+                          </a>
+                        </li>
+
+                        <li class="nav-item">
+                          <a href="/clients/integrity/tracking"  class="nav-link">
+                            <i class="nav-icon far fa-circle text-default"></i>
+                            <p>Tracking</p>
+                          </a>
+                        </li>
+                                     
+                      </ul>
+                    </li> 
+
+
+
+                   <hr class="horizintal-line" th:if="${#lists.contains(user.roles, &quot;Integrity Admin&quot;) or  #lists.contains(user.roles, &quot;Integrity User&quot;) }" />
+
+                      <li class="nav-item has-treeview ">
+                          <a href="#" class="nav-link ">
+                            <i class="nav-icon fa fa-users"></i>
+                            <p>
+                              Users
+                              <i class="fas fa-angle-left right"></i>
+                            
+                            </p>
+                          </a>
+                          <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                              <a href="/clients/users" class="nav-link">
+                                <i class="fa fa-users nav-icon"></i>
+                                <p>View Users</p>
+                              </a>
+                            </li>
+                                         
+                          </ul>
+                        </li> 
+                        <hr class="horizintal-line" />
+
+                        <li class="nav-item has-treeview ">
+                          <a href="#" class="nav-link ">
+                            <i class="nav-icon fa fa-th-large"></i>
+                            <p>
+                              Configurations 
+                              <i class="fas fa-angle-left right"></i>
+                            
+                            </p>
+                          </a>
+                          <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                              <a href="/clients/appkeys" class="nav-link">
+                                <i class="nav-icon far fa-circle text-success"></i>
+                                <p>App Keys</p>
+                              </a>
+                            </li>
+                            <li class="nav-item">
+                              <a href="/clients/service-configs" class="nav-link">
+                                <i class="nav-icon far fa-circle text-danger"></i>
+                                <p>Service Configs</p>
+                              </a>
+                            </li>
+                            <li class="nav-item">
+                              <a href="/clients/callback-urls" class="nav-link">
+                                <i class="nav-icon far fa-circle text-warning"></i>
+                                <p>Callback Urls</p>
+                              </a>
+                            </li>
+                                         
+                          </ul>
+                        </li> 
+                        <hr class="horizintal-line" />
+
+                        <li class="nav-item has-treeview">
+                          <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-envelope"></i>
+                            <p>
+                              Reports
+                              <i class="right fas fa-angle-left"></i>
+                            </p>
+                          </a>
+        
+                         <ul class="nav nav-treeview">
+                           <li class="nav-item">
+                             <a href="/clients/reports/outgoingmessages" class="nav-link">
+                               <i class="far fa-circle nav-icon"></i>
+                               <p>Outgoing Messages </p>
+                             </a>
+                           </li>
+
+                           <li class="nav-item">
+                            <a href="/clients/reports/incoming-messages" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Incoming Messages </p>
+                            </a>
+                          </li>
+
+
+                         </ul>
+                       </li>
+        
+                       <hr class="horizintal-line" />
+
+                    
+                    </ul>
+
+                    <ul th:if="${#lists.contains(user.roles, &quot;Integrity Officer&quot;) }"
+                    class="nav nav-pills nav-sidebar flex-column"
+                    data-widget="treeview" role="menu" data-accordion="false">
+                      <!-- Add icons to the links using the .nav-icon class
+                          with font-awesome or any other icon font library -->
+
+                          <li class="nav-header">MESSAGES</li>
+                    
+                          <li class="nav-item has-treeview " >
+                            <a href="/clients/integrity/officer-tracking" class="nav-link">
+                              <i class="nav-icon fas fa-envelope"></i>
+                              <p>
+                                Tracking Messages
+                              </p>
+                            </a>
+                          </li>
+                      </ul>
+
+
+
+                  </nav>
+                  <!-- /.sidebar-menu -->
+                </div>
+
+
+            </div>
+            <p th:case="*"></p> 
+          </div>
+      
+        
+
+
+</section>
+<!-- /.sidebar -->

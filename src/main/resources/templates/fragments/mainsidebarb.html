@@ -1,0 +1,121 @@
+<!-- sidebar: style can be found in sidebar.less -->
+<section class="sidebar" xmlns:th="http://www.w3.org/1999/xhtml">
+    <!-- sidebar menu: : style can be found in sidebar.less -->
+    <!--    // th:if="${#lists.contains(user.roles, &quot;API_USER&quot;) }-->
+
+    <!-- <span th:if="${user != null or user.roles !=null}"> -->
+
+    <ul class="sidebar-menu">
+        <li class="active treeview">
+            <a href="/dashboard">
+                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+            </a>
+        </li>
+
+        <li class="treeview">
+            <a href="#">
+                <img style="width:40px;height:40px" src="/img/sms.png" class="img-circle"
+                     alt=""/>
+
+                <span > Habary </span>
+            </a>
+        </li>
+
+        <li class="treeview" >
+            <a href="#">
+                <i class="fa fa-gears"></i>
+                <span>Messages</span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li><a ><i class="fa fa-edit"></i>Compose</a></li>
+                <li><a ><i class="fa fa-sign-out"></i>Inbox</a></li>
+                <li><a ><i class="fa fa-sign-out"></i>Outbox</a></li>
+            </ul>
+        </li>
+
+
+        <li class="treeview" >
+            <a href="#">
+                <i class="fa fa-gears"></i>
+                <span>User & Groups</span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li><a ><i class="fa fa-edit"></i> Profile</a></li>
+                <li><a ><i class="fa fa-sign-out"></i> Log Out</a></li>
+            </ul>
+        </li>
+
+
+        <li class="treeview" >
+            <a href="#">
+                <i class="fa fa-users"></i>
+                <span>Clients/Business</span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li><a ><i class="fa fa-plus"></i> Add</a></li>
+                <li><a ><i class="fa fa-file"></i> View & Manage</a></li>
+            </ul>
+        </li>
+
+
+        <li class="treeview" >
+            <a href="#">
+                <i class="fa fa-gears"></i>
+                <span>Credit</span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li><a ><i class="fa fa-edit"></i> Profile</a></li>
+                <li><a ><i class="fa fa-sign-out"></i> Log Out</a></li>
+            </ul>
+        </li>
+
+        <li class="treeview" >
+            <a href="#">
+                <i class="fa fa-gears"></i>
+                <span>Reports</span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li><a ><i class="fa fa-edit"></i> Utilization Report</a></li>
+                <li><a ><i class="fa fa-sign-out"></i> Credit Balances</a></li>
+                <li><a ><i class="fa fa-sign-out"></i> Service Activity</a></li>
+            </ul>
+        </li>
+
+        <li class="treeview" >
+            <a href="#">
+                <i class="fa fa-gears"></i>
+                <span>API</span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li><a ><i class="fa fa-edit"></i> Documentation</a></li>
+                <li><a ><i class="fa fa-sign-out"></i>  API Key</a></li>
+                <li><a ><i class="fa fa-sign-out"></i> Register Callbacks</a></li>
+            </ul>
+        </li>
+
+
+        <li class="treeview" >
+            <a href="#">
+                <i class="fa fa-gears"></i>
+                <span>Settings</span>
+                <i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+                <li><a ><i class="fa fa-edit"></i> Profile</a></li>
+                <li><a ><i class="fa fa-sign-out"></i> Logout</a></li>
+            </ul>
+        </li>
+
+    </ul>
+
+    <!-- </span> -->
+
+
+</section>
+<!-- /.sidebar -->
